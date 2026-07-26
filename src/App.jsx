@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
 import Itinerary from "./pages/Itinerary";
 import Packing from "./pages/Packing";
+import Map from "./pages/Map";
 
 export default function App() {
   return (
@@ -19,6 +20,8 @@ export default function App() {
         <Route path="/itinerary" element={<Itinerary />} />
 
         <Route path="/packing" element={<Packing />} />
+
+        <Route path="/map" element={<Map />} />
 
       </Routes>
 

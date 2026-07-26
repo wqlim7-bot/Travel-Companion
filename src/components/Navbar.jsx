@@ -20,6 +20,8 @@ export default function Navbar() {
 
           <Link to="/packing">Packing</Link>
 
+          <Link to="/map">Map</Link>
+
         </div>
 
       </div>
