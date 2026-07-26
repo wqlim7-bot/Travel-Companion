@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 
+import Upload from "./pages/Upload";
 import Dashboard from "./pages/Dashboard";
 import Itinerary from "./pages/Itinerary";
 import Packing from "./pages/Packing";
@@ -15,6 +16,8 @@ export default function App() {
 
       <Routes>
 
+        <Route path="/upload" element={<Upload />} />
+        
         <Route path="/" element={<Dashboard />} />
 
         <Route path="/itinerary" element={<Itinerary />} />
