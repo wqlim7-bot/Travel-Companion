@@ -1,6 +1,22 @@
 import DashboardCard from "../components/DashboardCard";
+import { useEffect, useState } from "react";
+import WeatherCard from "../components/WeatherCard";
+import { getWeather } from "../services/weather";
 
 export default function Dashboard() {
+    const [weather,setWeather] = useState(null);
+
+
+    useEffect(()=>{
+
+    getWeather()
+    .then(data=>{
+
+    setWeather(data);
+
+    });
+
+    },[]);
 
 return(
 
@@ -44,15 +60,20 @@ return(
 
 </DashboardCard>
 
-<DashboardCard title="Weather">
+{
+weather &&
 
-<p>
+<WeatherCard
 
-Coming in Phase 2
+temperature={
+weather.temperature_2m
+}
 
-</p>
+condition="Partly cloudy"
 
-</DashboardCard>
+/>
+
+}
 
 <DashboardCard title="Next Activity">
 
