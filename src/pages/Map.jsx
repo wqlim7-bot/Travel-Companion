@@ -1,32 +1,43 @@
-export default function Map() {
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup
+} from "react-leaflet";
+
+import "leaflet/dist/leaflet.css";
+
 
 const destinations = [
 
 {
 name:"Lima",
-description:"Capital city and arrival point",
-icon:"🌊"
+position:[-12.0464,-77.0428],
+description:"Capital city and arrival point"
 },
 
 {
 name:"Cusco",
-description:"Historic Inca capital",
-icon:"🏛️"
+position:[-13.5319,-71.9675],
+description:"Historic Inca capital"
 },
 
 {
 name:"Sacred Valley",
-description:"Ancient Inca villages and landscapes",
-icon:"🌄"
+position:[-13.3289,-72.0742],
+description:"Ancient Inca sites"
 },
 
 {
 name:"Machu Picchu",
-description:"Iconic Inca citadel",
-icon:"🏔️"
+position:[-13.1631,-72.5450],
+description:"Iconic Inca citadel"
 }
 
 ];
+
+
+export default function Map(){
 
 
 return (
@@ -34,125 +45,90 @@ return (
 <div className="max-w-6xl mx-auto p-6">
 
 
-<h1 className="text-4xl font-bold">
+<h1 className="text-4xl font-bold mb-3">
 
 🗺️ Peru Explorer Map
 
 </h1>
 
 
-<p className="text-gray-600 mb-8">
+<p className="text-gray-600 mb-6">
 
-Your journey through Peru
+Lima → Cusco → Sacred Valley → Machu Picchu
 
 </p>
 
 
 
 <div className="
-bg-slate-200
 rounded-xl
-h-96
-flex
-items-center
-justify-center
-shadow
-mb-8
+overflow-hidden
+shadow-lg
 ">
 
 
-<div className="text-center">
+<MapContainer
 
-<p className="text-5xl">
-🇵🇪
-</p>
+center={[-13.2,-72]}
 
-<p className="text-xl font-semibold mt-3">
+zoom={5}
 
-Interactive Map Coming Soon
+style={{
+height:"500px",
+width:"100%"
+}}
 
-</p>
-
-
-<p className="text-gray-600">
-
-Google Maps integration in next phase
-
-</p>
-
-</div>
+>
 
 
-</div>
+<TileLayer
 
+url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
 
+/>
 
-<h2 className="
-text-2xl
-font-semibold
-mb-4
-">
-
-Destinations
-
-</h2>
-
-
-
-<div className="
-grid
-md:grid-cols-2
-gap-5
-">
 
 
 {
 destinations.map((place,index)=>(
 
-<div
+<Marker
+
 key={index}
-className="
-bg-white
-rounded-xl
-shadow-md
-p-5
-"
+
+position={place.position}
+
 >
 
+<Popup>
 
-<div className="text-3xl">
-
-{place.icon}
-
-</div>
-
-
-<h3 className="
-text-xl
-font-semibold
-mt-2
-">
+<h3 className="font-bold">
 
 {place.name}
 
 </h3>
 
-
-<p className="text-gray-600">
+<p>
 
 {place.description}
 
 </p>
 
+</Popup>
 
-</div>
 
+</Marker>
 
 ))
 }
 
 
+
+</MapContainer>
+
+
 </div>
+
 
 
 </div>
